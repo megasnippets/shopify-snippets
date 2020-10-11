@@ -1,0 +1,141 @@
+<div class="extracontent page-width" style="text-align: center">
+   <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 20px;">{{section.settings.section-heading}}</h2>
+  <h3 class="SectionHeader__SubHeading Heading u-h6" style="margin-bottom: 60px;">{{section.settings.section-subheading}}</h3>
+{% for block in section.blocks %}
+<div class="pageblock" style="text-align: center;">
+
+  <div class="featurerow{% if block.settings.invert == true %} rev{%endif%}">
+<div class="featurerowitem">
+     <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 30px;">{{block.settings.title}}</h2>
+  {{block.settings.content}}
+  
+</div>
+<div class="featurerowitem">
+  
+  <img src="{{block.settings.image | img_url: 'x500' }}" height="auto" width="auto">
+</div>
+</div>
+  </div>
+{% endfor %}
+
+</div>
+
+
+
+<style>
+  
+  .pageblock {
+     padding: 30px 0;
+    
+  }
+  
+  .rev {
+    flex-direction: row-reverse;
+    
+  }
+  
+  .featurerow {
+
+display: flex;
+    width: 100%;
+    padding: 30px 0;
+    
+}
+
+.featurerowitem {
+    flex: 0 1 50%;
+      align-self: center;
+  max-height: 500px;
+  padding: 0px 60px;
+  overflow: hidden;
+}
+  @media only screen and (max-width: 992px) {
+    .featurerowitem {
+
+  padding: 0px 40px;
+
+}
+    
+  }
+  
+  @media only screen and (max-width: 768px) {
+      .featurerow {
+    padding: 10px 0;
+flex-direction: column-reverse;
+}
+      .rev {
+    flex-direction: column-reverse;
+    
+  }
+    .featurerowitem {
+    padding: 20px 10px;
+}
+      .pageblock {
+     padding: 10px 0;
+    
+  }
+  }
+  
+</style>
+
+
+
+
+{% schema %}
+{
+"name": "Product Page Blocks",
+    "settings": [ 
+      {
+        "type": "text",
+        "id": "section-heading",
+        "label": "Header"
+      },
+ {
+        "type": "text",
+        "id": "section-subheading",
+        "label": "Subheader"
+      }
+
+
+],
+
+"blocks": [
+			{
+				"type": "text",
+				"name": "Section",
+				"settings": [
+					{
+						"type": "richtext",
+						"id": "content",
+						"label": "Section Content"
+					},
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Section Image"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Section Title"
+					},
+					{
+                       "type":      "checkbox",
+                       "id":        "invert",
+                       "label":     "Invert Positioning?",
+                       "default":   false
+                    }
+					
+				]
+			}
+		]
+		
+	}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
