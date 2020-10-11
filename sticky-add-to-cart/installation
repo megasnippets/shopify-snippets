@@ -1,0 +1,2 @@
+add {% include 'sticky-add-to-cart' %} to product-template
+

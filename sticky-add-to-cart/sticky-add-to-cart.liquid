@@ -1,0 +1,27 @@
+<div style="position:fixed;width:100%;bottom:0; z-index:999; background: white; padding:15px 0" id="sticky-add-to-cart" class="sticky-add-to-cart hide">
+  <div class="sticky-cart-wrapper">
+{% form "product", product, class: "sticky-form"  %}
+  
+  <input type="hidden" value="1" name="quantity">
+  <input type="hidden" value="{{product.selected_or_first_available_variant.id}}" name="id">
+
+    <button class="product-page--add-to-cart font--secondary-button" type="submit" value="Add to cart" style="width:90%; padding:10px; background: #67c3cf; display:block; margin:auto;border:none;">
+    <span class="button-span" style="margin-left:12%; color: white;font-weight: 600;">ADD TO CART</span>
+      <style>
+
+        .button-span:after {
+        
+          content: '{{product.price |money}}';
+          margin-right:15px;
+          float:right;
+        
+        }
+  
+
+	</style>
+      </button>
+{% endform %}
+  </div>
+ 
+</div>
+
