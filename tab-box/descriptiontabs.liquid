@@ -1,0 +1,91 @@
+<div class="desctabs">
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="details-tab" data-toggle="tab" data-target="#details" role="tab" aria-controls="details"
+      aria-selected="true">{{ section.settings.detailstitle }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="frame-tab" data-toggle="tab" data-target="#frame" role="tab" aria-controls="frame"
+      aria-selected="false">{{ section.settings.frametitle }}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="size-tab" data-toggle="tab" data-target="#size" role="tab" aria-controls="size"
+      aria-selected="false">{{ section.settings.sizetitle }}</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+  {{ section.settings.detailscontent }}
+  </div>
+  <div class="tab-pane fade" id="frame" role="tabpanel" aria-labelledby="frame-tab">
+  {{ section.settings.framecontent }}
+  </div>
+  <div class="tab-pane fade" id="size" role="tabpanel" aria-labelledby="size-tab">
+  {{ section.settings.sizecontent }}
+  </div>
+</div>
+
+</div>
+
+
+<script>
+
+  
+</script>
+
+
+<style>
+  .nav-link {
+   cursor: pointer; 
+    
+  }
+  
+  .desctabs {
+   margin: 50px 0px; 
+    
+  }
+  
+  
+  .desctabs li a {
+       font-family: Montserrat,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+        font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase; 
+    
+  }
+  
+  
+  .desctabs .nav-tabs {
+    background-color: #eaeaea;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+  
+  
+  
+  .desctabs li {
+    padding: 0!important;
+  }
+  
+  .desctabs ul {
+    margin: 0;
+        margin-bottom: 0!important;
+  }
+
+  
+  
+  .desctabs a {
+       text-decoration: unset!important;
+  }
+  
+  .desctabs .tab-content {
+       border: 1px solid #dee2e6;
+    border-top: none;
+    padding: 15px; 
+    
+  }
+  
+</style>
