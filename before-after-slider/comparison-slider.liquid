@@ -1,0 +1,121 @@
+<script
+  type="module"
+  src="https://unpkg.com/img-comparison-slider@latest/dist/component/component.esm.js"
+></script>
+<script
+  nomodule=""
+  src="https://unpkg.com/img-comparison-slider@latest/dist/component/component.js"
+></script>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/img-comparison-slider@latest/dist/collection/styles/initial.css"
+/>
+
+{{ 'slick.js' | asset_url | script_tag }}
+
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width">
+  <h2 style="text-align: center">{{section.settings.heading}}</h2>
+    <p style="text-align: center">{{section.settings.heading2}}</p>
+  
+  
+<div class="slider">  
+{% for block in section.blocks %}
+  <div>
+<img-comparison-slider class="comparisonslider">
+  <img slot="before" src="{{block.settings.img1 | img_url: 'master' }}" width="100%"/>
+  <img slot="after" src="{{block.settings.img2 | img_url: 'master' }}" width="100%" />
+</img-comparison-slider>
+  </div>
+{% endfor %}
+  
+</div>
+</div>
+
+
+<style>
+  .comparisonslider {
+	max-height: 300px;
+    width: 100%;
+    margin-bottom: 15px;
+        border: 4px solid #67c3cf;
+    border-radius: 15px;
+
+    --hint-size: 40px;
+    --hint-color: #62edff;
+    --hint-opacity: 0.8;
+      --divider: 3px solid #67c3cf;
+  z-index: 1;
+}  
+  
+  .comparisonslider:focus {
+    outline: none !important;
+}
+
+</style>
+
+<script>
+    $(document).ready(function(){  
+  
+$('.slider').slick();
+
+    });
+  
+</script>
+
+{% schema %}
+{
+"name": "Comparison Slider",
+    "settings": [ 
+          {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "heading2",
+      "type": "text",
+      "label": "Sub Heading"
+    }
+
+
+],
+"name": "Comparison Slider",
+
+"blocks": [
+			{
+				"type": "text",
+				"name": "Comparison Slide",
+				"settings": [
+					{
+      "id": "img1",
+      "type": "image_picker",
+      "label": "Image Before"
+    },
+    {
+      "id": "img2",
+      "type": "image_picker",
+      "label": "Image After"
+    }
+					
+					
+				]
+			}
+		],
+  "presets": [
+    {
+      "name": "Comparison Slider",
+      "category": "Image"
+    }
+  ]
+		
+	}
+
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

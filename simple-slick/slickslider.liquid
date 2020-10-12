@@ -1,0 +1,168 @@
+<script type="text/javascript" src="//code.jquery.com/jquery-3.5.1.min.js "></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-3.3.1.min.js"></script>
+{{ 'slick.js' | asset_url | script_tag }}
+
+<div class="slickwrapper" >
+  <h2>{{section.settings.heading}}</h2>
+  <h3>{{section.settings.heading2}}</h3>
+<div class="slick ">
+
+{% for block in section.blocks %}
+  <div>
+  <img src="{{block.settings.img1 | img_url: 'master' }}" width="100%"/>
+  </div>
+{% endfor %}
+</div>
+</div>			
+
+
+<style>
+  .slickwrapper {
+    text-align: center;
+	padding: 0 10px;
+  }
+ .slick{
+
+ }
+.slick-slide { 
+  padding: 10px;
+      outline: none;
+}
+  .slick-slide:active { 
+
+      outline: none;
+}
+   
+  .featured-slick-next {
+
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  top:50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+right: -30px;
+    border: none;
+       background: none!important;
+
+}
+
+ .featured-slick-prev {
+
+  display: block;
+  position: absolute;
+  left: -30px;
+  top:50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  font-size: 30px;
+
+
+    border: none;
+    background: none!important;
+
+}
+  .featured-slick-next:focus {
+  outline: none;
+  box-shadow: none;
+}
+    .featured-slick-prev:focus {
+  outline: none;
+  box-shadow: none;
+}
+</style>
+
+
+
+ <script type="text/javascript">
+
+   
+ $(document).ready(function() {
+ $('.slick').slick({
+ prevArrow:"<button type='button' class='featured-slick-prev'><</button>",
+ nextArrow:"<button type='button' class='featured-slick-next'>></button>",
+ dots: false,
+ infinite: true,
+ speed: 500,
+ slidesToShow: 2,
+ slidesToScroll: 2,
+ autoplay: true,
+ autoplaySpeed: 4000,
+ arrows: true,
+     mobileFirst: true,
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+ });
+   
+
+ });
+   
+   
+
+    
+
+ </script>
+
+
+
+
+
+
+
+
+{% schema %}
+{
+"name": "Carousel slider",
+    "settings": [ 
+          {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "heading2",
+      "type": "text",
+      "label": "Sub Heading"
+    }
+
+
+],
+"name": "Carousel Slides",
+
+"blocks": [
+			{
+				"type": "text",
+				"name": "Comparison Slide",
+				"settings": [
+					{
+      "id": "img1",
+      "type": "image_picker",
+      "label": "Image"
+    }
+					
+					
+				]
+			}
+		],
+  "presets": [
+    {
+      "name": "Carousel Slider",
+      "category": "Image"
+    }
+  ]
+		
+	}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
