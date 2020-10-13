@@ -1,4 +1,4 @@
-<div class="extracontent page-width" style="text-align: center">
+<div class="extracontent container" style="text-align: center">
    <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 20px;">{{section.settings.section-heading}}</h2>
   <h3 class="SectionHeader__SubHeading Heading u-h6" style="margin-bottom: 60px;">{{section.settings.section-subheading}}</h3>
 {% for block in section.blocks %}
@@ -83,7 +83,7 @@ flex-direction: column-reverse;
 
 {% schema %}
 {
-"name": "Product Page Blocks",
+"name": "Page Blocks",
     "settings": [ 
       {
         "type": "text",
@@ -128,7 +128,13 @@ flex-direction: column-reverse;
 					
 				]
 			}
-		]
+		],
+  "presets": [
+    {
+      "name": "Page Blocks",
+      "category": "About"
+    }
+  ]
 		
 	}
 
