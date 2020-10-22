@@ -1,18 +1,27 @@
-<div class="extracontent container" style="text-align: center">
-   <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 20px;">{{section.settings.section-heading}}</h2>
-  <h3 class="SectionHeader__SubHeading Heading u-h6" style="margin-bottom: 60px;">{{section.settings.section-subheading}}</h3>
+<div class="extracontent container" style="{% if block.settings.align == true %} text-align: center;{%endif%}">
+    {% if section.settings.section-heading != blank %}
+   <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 20px; text-align: center;">{{section.settings.section-heading}}</h2>
+  <h3 class="SectionHeader__SubHeading Heading u-h6" style="margin-bottom: 60px; text-align: center;">{{section.settings.section-subheading}}</h3>
+    {% endif %}
 {% for block in section.blocks %}
-<div class="pageblock" style="text-align: center;">
+<div class="pageblock" style="{% if block.settings.align == true %} text-align: center;{%endif%}">
 
-  <div class="featurerow{% if block.settings.invert == true %} rev{%endif%}">
-<div class="featurerowitem">
-     <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 30px;">{{block.settings.title}}</h2>
-  {{block.settings.content}}
+  <div class="featurerow flex {% if block.settings.invert == true %} rev{%endif%}">
+<div class="featurerowitem col-sm-12 col-md-6">
+  <div style="max-width: 600px;display: block;margin: 0 auto;">
+     <h3 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 30px;">{{block.settings.title}}</h3>
+  <div class="blockcontent">
+    {{block.settings.content}}
+  </div>
+  {% if block.settings.button == true %}
   
+  <a href="{{block.settings.link}}"><button class="pageblockbutton">{{block.settings.buttontxt}}</button></a>
+  {%endif%}
+  </div>
 </div>
-<div class="featurerowitem">
+<div class="featurerowitem col-sm-12 col-md-6" style="{% if block.settings.fullsizeimg == false %}padding: 0px 30px;{%endif%}{% if block.settings.fullsizeimg == true %}padding: 0;{%endif%}display:flex;justify-content: center;" >
   
-  <img src="{{block.settings.image | img_url: 'x500' }}" height="auto" width="auto">
+  <img class="pageblockimage" src="{{block.settings.image | img_url: 'x500' }}" height="auto" width="auto">
 </div>
 </div>
   </div>
@@ -21,8 +30,29 @@
 </div>
 
 
-
 <style>
+  .blockcontent p {
+   font-size: 15px;
+    line-height: 1.6; 
+    
+  }
+  
+  
+   .extracontent {
+   margin: 60px auto;
+ }
+  
+  .pageblockbutton {
+    
+       padding: 15px 60px;
+    margin: 30px 0px;
+    background-color: #204f44;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border: 0;
+} 
+  }
   
   .pageblock {
      padding: 30px 0;
@@ -36,27 +66,44 @@
   
   .featurerow {
 
-display: flex;
+
     width: 100%;
     padding: 30px 0;
     
 }
+  .pageblockimage {
+    
+   max-width: 100%;
+  }
 
 .featurerowitem {
-    flex: 0 1 50%;
+    max-width: 100%;
       align-self: center;
   max-height: 500px;
-  padding: 0px 60px;
+  padding: 0px 80px;
   overflow: hidden;
 }
+  
+  
   @media only screen and (max-width: 992px) {
     .featurerowitem {
-
+max-height: 1000px;
   padding: 0px 40px;
+    }
+ .extracontent {
+   margin: 30px auto;
+ }
+          .featurerow {
 
+flex-direction: column-reverse;
 }
+      .rev {
+    flex-direction: column-reverse;
     
   }
+}
+    
+  
   
   @media only screen and (max-width: 768px) {
       .featurerow {
@@ -68,7 +115,7 @@ flex-direction: column-reverse;
     
   }
     .featurerowitem {
-    padding: 20px 10px;
+    padding: 20px 30px;
 }
       .pageblock {
      padding: 10px 0;
@@ -123,6 +170,34 @@ flex-direction: column-reverse;
                        "type":      "checkbox",
                        "id":        "invert",
                        "label":     "Invert Positioning?",
+                       "default":   false
+                    },
+					{
+                       "type":      "checkbox",
+                       "id":        "button",
+                       "label":     "Button?",
+                       "default":   false
+                    },
+					{
+						"type": "text",
+						"id": "buttontxt",
+						"label": "Button Text"
+					},
+					{
+						"type": "url",
+						"id": "link",
+						"label": "Button Link"
+					},
+					{
+                       "type":      "checkbox",
+                       "id":        "align",
+                       "label":     "Center align text?",
+                       "default":   false
+                    },
+					{
+                       "type":      "checkbox",
+                       "id":        "fullsizeimg",
+                       "label":     "disable image padding?",
                        "default":   false
                     }
 					
