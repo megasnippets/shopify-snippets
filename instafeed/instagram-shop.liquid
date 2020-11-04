@@ -1,0 +1,122 @@
+<div class="content-indent {{ section.settings.top-offeset}}">
+  <div class="{% unless section.settings.section_width %}page-width {% else %}fullwidth-{{section.id}} {% endunless %} wow fadeIn">
+
+    {%- if section.settings.title != blank  or section.settings.subtitle != blank -%}
+    <div class="sec-ttl {{ settings.title_align}}">
+      <h3 class="h3">{{ section.settings.title }}</h3>
+      {%- if section.settings.subtitle != blank -%}<span>{{section.settings.subtitle}}</span>{%- endif -%}                 
+    </div>
+    {% endif %} 
+
+    <div class="insta-shop">
+      {{ pages[section.settings.insta_page].content }}
+    </div>
+
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Instagram",
+    "class":"index-section index-section--flush",
+    "settings": [	  
+     {
+        "type": "textarea",
+        "id": "title",
+        "label": "Heading",
+        "default": "Heading"
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Sub Heading",
+        "default": "Describe your products, collection, content etc..."
+      },
+	 {
+        "type": "page",
+        "id": "insta_page",
+        "label": "Select Page",
+		"info":"[how to create page and place code](https://www.adornthemes.com/knowledge-base/add-instagram-shop-shopify/)"
+      },
+	 {
+		 "type": "paragraph",
+		 "content":"Section==="
+      },
+	 {
+            "type": "select",
+            "id": "top-offeset",
+            "label": "Top OffSet",
+            "default": "default",
+            "options": [
+              {
+                "value": "default",
+                "label": "Default"
+              },
+              {
+                "value": "small",
+                "label": "Small"
+              },
+			  {
+                "value": "none",
+                "label": "None"
+              }
+			]
+        },
+      {
+          "type":"checkbox",
+          "id":"section_width",
+          "label":"Fullwidth?",
+          "default": true
+        },
+		 {
+        "type": "paragraph",
+        "content": "Left/Right Padding : Fullwidth Section Only==="
+      }, 	
+      {
+        "type": "range",
+        "id": "pad-desk",
+        "label": "Desktop",
+        "default": 55,
+        "min": 0,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "pad-ipad",
+        "label": "Tablet",
+        "default": 15,
+        "min": 0,
+        "max": 30,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "pad-mbl",
+        "label": "Mobile",
+        "default": 10,
+        "min": 0,
+        "max": 20,
+        "step": 1
+      }
+    ],   
+    "presets": [
+      {
+        "name": "Instagram Shop",
+        "category": "5. Social"       
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+ @media only screen and (min-width: 1025px) {
+    .fullwidth-{{section.id}} { padding-left:{{ section.settings.pad-desk}}px; padding-right:{{ section.settings.pad-desk}}px; }
+  } 
+  @media only screen and (max-width: 1024px) {
+     .fullwidth-{{section.id}} { padding-left:{{ section.settings.pad-ipad}}px; padding-right:{{ section.settings.pad-ipad}}px; }
+   } 
+  @media only screen and (max-width: 767px) {
+     .fullwidth-{{section.id}} { padding-left:{{ section.settings.pad-mbl}}px; padding-right:{{ section.settings.pad-mbl}}px; }
+   } 
+
+</style>
