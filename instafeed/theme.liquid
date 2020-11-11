@@ -1,1 +1,9 @@
-{%- if content_for_layout contains 'instafeed' or footerSEc contains 'instafeed' -%}<script src="{{ 'instagramFeed.js' | asset_url }}" defer="defer"></script>{%- endif -%}
+{{ '//code.jquery.com/jquery-3.5.1.min.js' | script_tag }}
+
+{{ 'slick.js' | asset_url | script_tag }}
+
+<link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
+
+{{ [[CORRECT Instant TOKENS Addr ]] | script_tag }}
+
+<script type="text/javascript" src="{{ 'instafeed.min.js' | asset_url  }}"></script>
