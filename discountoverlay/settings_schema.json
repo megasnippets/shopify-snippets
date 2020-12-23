@@ -1,0 +1,66 @@
+{
+    "name": "Discount Overlay",
+    "settings": [
+            {
+        "type": "checkbox",
+        "id": "discountoverlay_enable",
+        "label": "Enable"
+      },
+            {
+        "type": "color",
+        "id": "discountoverlay_color",
+        "label": "Background Colour",
+         "default": "#000"     
+      },
+      {
+        "type": "color",
+        "id": "discountoverlay_textcolor",
+        "label": "Text Colour",
+              "default": "#fff"    
+      },
+            {
+        "type": "header",
+        "content": "Phase 1"
+      },
+      {
+        "type": "text",
+        "id": "discountoverlay_text",
+        "label": "Badge Text"
+      },
+
+      {
+        "type": "text",
+        "id": "discountoverlay_startdate",
+        "label": "Overlay start date",
+        "info": "Please enter date using exact format ( Month dd, yyyy hh:mm:ss GMT[timezone offset] ) e.g. November 30, 2020 23:59:00 GMT+1100"
+      },
+      {
+        "type": "text",
+        "id": "discountoverlay_enddate",
+        "label": "Overlay end date",
+        "info": "Please enter date using exact format ( Month dd, yyyy hh:mm:ss GMT[timezone offset] ) e.g. November 30, 2020 23:59:00 GMT+1100"
+      },
+
+            {
+        "type": "header",
+        "content": "Phase 2"
+      },
+      {
+        "type": "text",
+        "id": "discountoverlay_text2",
+        "label": "Badge Text"
+      },
+      {
+        "type": "text",
+        "id": "discountoverlay_startdate2",
+        "label": "Overlay start date",
+        "info": "Please enter date using exact format ( Month dd, yyyy hh:mm:ss GMT[timezone offset] ) e.g. November 30, 2020 23:59:00 GMT+1100"
+      },
+      {
+        "type": "text",
+        "id": "discountoverlay_enddate2",
+        "label": "Overlay end date",
+        "info": "Please enter date using exact format ( Month dd, yyyy hh:mm:ss GMT[timezone offset] ) e.g. November 30, 2020 23:59:00 GMT+1100"
+      }     
+    ]
+  },

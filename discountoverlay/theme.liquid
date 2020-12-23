@@ -1,3 +1,4 @@
+  
   {% if settings.discountoverlay_enable %}
 <script>
   
@@ -8,11 +9,17 @@ window.setInterval(function() {
   var currentutc = new Date( current.getUTCFullYear(), current.getUTCMonth(), current.getUTCDate(), current.getUTCHours(), current.getUTCMinutes(), current.getUTCSeconds() );
   
   var start = new Date("{{settings.discountoverlay_startdate}}");
+  var start2 = new Date("{{settings.discountoverlay_startdate2}}"); 
+                       
   var startutc = new Date( start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate(), start.getUTCHours(), start.getUTCMinutes(), start.getUTCSeconds() );
+  var startutc2 = new Date( start2.getUTCFullYear(), start2.getUTCMonth(), start2.getUTCDate(), start2.getUTCHours(), start2.getUTCMinutes(), start2.getUTCSeconds() );  
+  
   
   var expiry = new Date("{{settings.discountoverlay_enddate}}");
+  var expiry2 = new Date("{{settings.discountoverlay_enddate2}}");       
+                        
   var expiryutc = new Date( expiry.getUTCFullYear(), expiry.getUTCMonth(), expiry.getUTCDate(), expiry.getUTCHours(), expiry.getUTCMinutes(), expiry.getUTCSeconds() );
-  
+  var expiryutc2 = new Date( expiry2.getUTCFullYear(), expiry2.getUTCMonth(), expiry2.getUTCDate(), expiry2.getUTCHours(), expiry2.getUTCMinutes(), expiry2.getUTCSeconds() );  
   
   if (startutc.getTime() < currentutc.getTime()) {
   
@@ -21,6 +28,17 @@ window.setInterval(function() {
 
   } else if (currentutc.getTime() < expiryutc.getTime()) {
     $('.discountoverlay').show();
+  }
+
+  }
+  
+    if (startutc2.getTime() < currentutc.getTime()) {
+  
+  if (currentutc.getTime() > expiryutc2.getTime()) {
+    $('.discountoverlay2').hide();
+
+  } else if (currentutc.getTime() < expiryutc2.getTime()) {
+    $('.discountoverlay2').show();
   }
 
   }
