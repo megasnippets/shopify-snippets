@@ -1,0 +1,60 @@
+<div id="section-cta" style="margin-bottom:20px">
+
+  <a style="max-width:100%; display:block" href="{{section.settings.url}}">
+    <img style="width:100%" class="desktop-new-banner" src="{{section.settings.desktop_image | img_url: 'master'}}"/>
+    <img style="width:100%" class="mobile-new-banner" src="{{section.settings.mobile_image | img_url: 'master'}}" />
+  </a>
+</div>
+
+<style>
+
+  .mobile-new-banner{
+  
+    display:none
+  
+  }
+  @media all and (max-width:767px){
+  
+    body .desktop-new-banner{
+    
+      display:none;
+    
+    }
+    
+    body .mobile-new-banner{
+    
+      display:block;
+    
+    }
+  
+  }
+</style>
+{% schema %}
+{
+  "name": "New Banner",
+  "settings": [
+    {
+      "id": "desktop_image",
+      "type": "image_picker",
+      "label": "Desktop Image"
+    },
+    {
+      "id": "mobile_image",
+      "type": "image_picker",
+      "label": "Mobile Image"
+    },
+    {
+      "id": "url",
+      "type": "url",
+      "label": "Link"
+    }
+
+  ],
+  "presets": [
+    {
+      "name": "New Banner",
+      "category": "Slideshow"
+    }
+  ]
+}
+{% endschema %}
