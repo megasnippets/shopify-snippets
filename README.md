@@ -3,7 +3,7 @@
 #### **ATC Redirect** ~theme.js (search for /cart.js and/or /add)
 >window.location.href="/cart";
 
-#### attribute for JS script tags that require jQuery
+#### Attribute for JS script tags that require jQuery
 >defer="defer"
 
 
