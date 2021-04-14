@@ -12,7 +12,7 @@
 >{%- endif -%}
 
 
-### **Inject CSS** Useful for Shopify Order Complete page
+### **Inject CSS** Useful for Shopify Order Complete page**
 ><script>
 >  var styles = `.class { property: value;}`
 >
