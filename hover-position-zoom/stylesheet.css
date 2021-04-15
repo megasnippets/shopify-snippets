@@ -4,6 +4,6 @@
 }
     
 #hoverzoom:hover img {
-    object-position: calc(var(--x) / 2) calc(var(--y) / 2);
-    transform: scale(1.5) translate(16.5%, 16.5%);
+    object-position: var(--x) var(--y);
+    transform: scale(2) translate(25%, 25%);
 }
