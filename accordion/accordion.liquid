@@ -1,150 +1,127 @@
 <div class="container" style="margin-bottom: 80px;text-align: center"> 
   
-    {% if section.settings.section-heading != blank %}
-   <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 20px;">{{section.settings.section-heading}}</h2>
-  <h3 class="SectionHeader__SubHeading Heading u-h6" style="margin-bottom: 60px;">{{section.settings.section-subheading}}</h3>
-  {% endif %}
-  
-  
-  <div class="row" style="display: flex; justify-content: center;">
-   <div class="col-xs-10 col-md-6"> 
+  {% if section.settings.section-heading != blank %}
+ <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 20px;">{{section.settings.section-heading}}</h2>
+<h3 class="SectionHeader__SubHeading Heading u-h6" style="margin-bottom: 60px;">{{section.settings.section-subheading}}</h3>
+{% endif %}
+
+
+<div class="row" style="display: flex; justify-content: center;">
+ <div class="col-xs-10 col-md-6"> 
+   <button class="belaccordion active">Details</button>
+<div class="belpanel show">
+<div style="margin: 20px 0">
+  <span class="accordioncontent " style="text-align: start">{{ product.description }}</span>
+</div>
+</div>
 {% for block in section.blocks %}
 <button class="belaccordion">{{block.settings.title}}</button>
 <div class="belpanel">
-  <div style="margin: 40px 0">
-    <span class="accordioncontent">{{block.settings.content}}</span>
-  </div>
-  </div>
+<div style="margin: 20px 0">
+  <span class="accordioncontent" style="text-align: start">{{block.settings.content}}</span>
+</div>
+</div>
 {% endfor %} 
-    </div>
   </div>
+</div>
 </div>  
-  
-  
-          <style>
-.accordioncontent p {
-     font-size: 15px;
-    line-height: 1.6; 
-}
-            
-.belaccordion {
-  background-color: transparent;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
 
-  transition: 0.4s;
-  border-bottom:2px solid #e6e6e6;
-  margin-top: 20px;
-      font-size: 20px;
-    font-weight: 500;
+
+        <style>
+.accordioncontent p {
+   font-size: 15px;
+  line-height: 1.6; 
+}
+          
+.belaccordion {
+background-color: transparent;
+color: #444;
+cursor: pointer;
+padding: 18px;
+width: 100%;
+border: none;
+text-align: left;
+outline: none;
+
+transition: 0.4s;
+border-bottom:2px solid #e6e6e6;
+margin-top: 20px;
+    font-size: 20px;
+  font-weight: 500;
 }
 
 .belactive, .belaccordion:hover {
-  background-color: #ccc;
+background-color: #ccc;
 }
 
 .belaccordion:after {
-  content: '\002B';
-  color: #777;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
+content: '\002B';
+color: #777;
+font-weight: bold;
+float: right;
+margin-left: 5px;
 }
 
-.belactive:after {
-  content: "\2212";
+.belaccordion.active:after {
+content: "\2212";
 }
 
 .belpanel {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+padding: 0 18px;
+background-color: white;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.2s ease-out;
+}
+          
+.show {
+max-height: 1000px; 
 }
 </style>
-          
-          
-          
-          
-          <script>
+        
+        
+        
+        
+        <script>
 
-
-var acc = document.getElementsByClassName("belaccordion");
+/** var acc = document.getElementsByClassName("belaccordion");
 var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } 
-  });
-}
        
-</script>
           
+for (i = 0; i < acc.length; i++) {
+acc[i].addEventListener("click", function() {
+  $(".activepanel").css("max-height", "0");
+  this.classList.toggle("active");
+  var panel = this.nextElementSibling;
+  panel.classList.toggle("activepanel");
+  if (panel.style.maxHeight) {
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  } 
+});
+}
+  **/        
+          
+var accordions = document.getElementsByClassName("belaccordion");
+
+for (var i = 0; i < accordions.length; i++) {
+accordions[i].onclick = function() {
+  this.classList.toggle("active");
+  this.nextElementSibling.classList.toggle("show");
+  hideAll(this);
+};
+}
+
+function hideAll(exceptThis) {
+for (var i = 0; i < accordions.length; i++) {
+  if (accordions[i] !== exceptThis) {
+    accordions[i].classList.remove("active");
+    accordions[i].nextElementSibling.classList.remove("show");
+  }
+}
+}
 
 
-{% schema %}
-{
-"name": "Accordion Blocks",
-    "settings": [ 
-      {
-        "type": "text",
-        "id": "section-heading",
-        "label": "Header"
-      },
- {
-        "type": "text",
-        "id": "section-subheading",
-        "label": "Subheader"
-      }
-
-
-],
-
-"blocks": [
-			{
-				"type": "text",
-				"name": "Accordion",
-				"settings": [
-					{
-						"type": "html",
-						"id": "content",
-						"label": "Section Content"
-					},
-
-					{
-						"type": "text",
-						"id": "title",
-						"label": "Section Title"
-					}
-					
-				]
-			}
-		],
-  "presets": [
-    {
-      "name": "Accordion Blocks",
-      "category": "About"
-    }
-  ]
-		
-	}
-
-{% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
+     
+</script>
