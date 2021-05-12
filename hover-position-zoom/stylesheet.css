@@ -1,3 +1,5 @@
+/* Apply #hoverzoom to the image container */
+
 #hoverzoom:hover {
   --x: 0px;
   --y: 0px;
