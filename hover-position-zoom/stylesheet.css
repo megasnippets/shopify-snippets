@@ -1,6 +1,8 @@
 #hoverzoom:hover {
   --x: 0px;
   --y: 0px;
+  cursor: zoom-in;
+  overflow: hidden;
 }
     
 #hoverzoom:hover img {
