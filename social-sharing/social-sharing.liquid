@@ -1,0 +1,76 @@
+<!-- Type: Snippet -->
+
+{% capture permalinkURL %}{{ shop.url }}{{ product.url }}{% endcapture %}
+{% capture shareTitle %}{{ product.title }}{% endcapture %}
+{% capture shareImage %}{{ product.featured_image | product_img_url: '2000x2000' }}{% endcapture %}
+
+{% if template.name == 'article' %}
+  {% capture permalinkURL %}{{ shop.url }}{{ article.url }}{% endcapture %}
+{% endif %}
+
+<div id="social-sharing" class="social-sharing" data-permalink="{{ permalinkURL }}">
+  
+  <span class="share-head">Share</span>
+
+
+  <!-- https://developers.facebook.com/docs/plugins/share-button/ -->
+  <a target="_blank" rel="nopener noreferrer" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="share-facebook">
+     <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 32 32">
+       <path d="M18.56 31.36V17.28h4.48l.64-5.12h-5.12v-3.2c0-1.28.64-2.56 2.56-2.56h2.56V1.28H19.2c-3.84 0-7.04 2.56-7.04 7.04v3.84H7.68v5.12h4.48v14.08h6.4z"></path>
+     </svg>
+     <span class="share-title">Share<span class="sr-only"> on Facebook</span></span>
+  </a>
+
+
+  <!-- https://dev.twitter.com/docs/intents -->
+  <a target="_blank" rel="nopener noreferrer" href="//twitter.com/share?url={{ permalinkURL }}&amp;text={{ shareTitle | escape }}" class="share-twitter">
+     <svg aria-hidden="true" focusable="false" role="presentation"  viewBox="0 0 24 24">
+       <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/>
+     </svg>
+      <span class="share-title">Tweet</span>
+  </a>
+
+
+  <!--
+  https://developers.pinterest.com/pin_it/
+  Pinterest get data from the same Open Graph meta tags Facebook uses
+  -->
+  <a target="_blank" rel="nopener noreferrer" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media={{ shareImage }}&amp;description={{ product.title | escape }}" class="share-pinterest">
+   <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 32 32">
+     <path d="M27.52 9.6c-.64-5.76-6.4-8.32-12.8-7.68-4.48.64-9.6 4.48-9.6 10.24 0 3.2.64 5.76 3.84 6.4 1.28-2.56-.64-3.2-.64-4.48-1.28-7.04 8.32-12.16 13.44-7.04 3.2 3.84 1.28 14.08-4.48 13.44-5.12-1.28 2.56-9.6-1.92-11.52-3.2-1.28-5.12 4.48-3.84 7.04-1.28 4.48-3.2 8.96-1.92 15.36 2.56-1.92 3.84-5.76 4.48-9.6 1.28.64 1.92 1.92 3.84 1.92 6.4-.64 10.24-7.68 9.6-14.08z"></path>
+   </svg>
+   <span class="share-title">Pin it</span>
+  </a>
+  
+<a href="mailto:?subject=&amp;body=:%20{{ shop.url }}" target="_blank" title="Send email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
+  <svg aria-hidden="true" data-fa-processed="" data-prefix="far" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  	<path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path>
+  </svg>
+</a>
+
+
+</div>
+
+
+<style>
+  
+  #social-sharing {
+  }
+  
+  .share-head {
+  	font-size: 1.1rem;
+    font-weight: 900;
+    margin-right: 0.5rem;
+  }
+  
+  .social-sharing svg { 
+    display: inline;
+    height: 1.1rem;
+    margin: 0 0.25rem;
+    vertical-align: text-top;
+ }  
+  
+  .share-title { 
+    display: none;
+  }
+</style>
