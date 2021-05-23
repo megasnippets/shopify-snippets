@@ -1,0 +1,118 @@
+<!-- load scripts after jQuery -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+
+  $('.carouse_wrapper').slick({
+  	infinite: true,
+  	speed: 500,
+  	slidesToShow: 1,
+  	slidesToScroll: 1
+  });
+</script>
+
+
+
+{% if section.blocks.size > 0 %}
+
+	<div class="carousel_wrapper" data-slick='{"autoplay": {{ section.settings.carousel_autoplay }}, "autoplaySpeed": {{ section.settings.autoplay_speed }}, "dots": {{ section.settings.carousel_dots }}, "arrows": {{ section.settings.carousel_arrows }}}'>
+
+  		{% for block in section.blocks %}
+          <div class="slider_item">
+              <div class="slider_img_wrap">
+                <img src="{{ block.settings.slide_img | img_url: 'original' }}" alt="" class="slider_img">
+              </div>
+              <div class="content_wrap">
+              <div class="slider_content">
+                <h2 class="slider_title">{{  block.settings.slide_title }}</h2>
+                <p class="slider_text">{{  block.settings.slide_text }}</p>
+                <a href="{{ block.settings.slide_link }}" class="button">{{ block.settings.button_title }}</a>
+              </div>
+              </div>
+          </div>
+    	{% endfor %}
+	</div>
+
+{% endif %}
+
+{% schema %}
+  {
+  "name": "Carousel",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type":"header",
+      "content":"Carousel option"
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_autoplay",
+      "label": "Enable autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_dots",
+      "label": "Enable dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_arrows",
+      "label": "Enable arrows",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "autoplay_speed",
+      "label": "Change slides every",
+        "options": [
+        { "value": "1000", "label": "1 seconds" },
+        { "value": "2000", "label": "2 seconds" },
+        { "value": "3000", "label": "3 seconds" },
+        { "value": "4000", "label": "4 seconds" },
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    }
+  ],
+  "blocks": [
+    {
+    "type": "slide",
+    "name": "Slide",
+    "settings": [
+          {
+            "type": "text",
+            "id": "button_title",
+            "label": "Button title"
+          },
+          {
+            "type": "url",
+            "id": "slide_link",
+            "label": "Slide link"
+          },
+          {
+            "type": "text",
+            "id": "slide_title",
+            "label": "Slider title"
+          },
+          {
+            "type": "textarea",
+            "id": "slide_text",
+            "label": "Slide text"
+          },
+          {
+            "type": "image_picker",
+            "id": "slide_img",
+            "label": "Add img for slide"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
