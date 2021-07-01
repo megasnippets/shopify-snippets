@@ -1,24 +1,38 @@
 {
     "name": "Discount Overlay",
     "settings": [
-            {
+      {
         "type": "checkbox",
         "id": "discountoverlay_enable",
         "label": "Enable"
       },
-            {
+      {
         "type": "color",
         "id": "discountoverlay_color",
         "label": "Background Colour",
-         "default": "#000"     
+        "default": "#000"
       },
       {
         "type": "color",
         "id": "discountoverlay_textcolor",
         "label": "Text Colour",
-              "default": "#fff"    
+        "default": "#fff"
       },
-            {
+      {
+        "type": "header",
+        "content": "Filtering Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "tag_filtering",
+        "label": "Enable Tag Filtering?"
+      },
+      {
+        "type": "text",
+        "id": "filter_tag",
+        "label": "Product Tag to match"
+      },
+      {
         "type": "header",
         "content": "Phase 1"
       },
@@ -27,7 +41,6 @@
         "id": "discountoverlay_text",
         "label": "Badge Text"
       },
-
       {
         "type": "text",
         "id": "discountoverlay_startdate",
@@ -40,8 +53,7 @@
         "label": "Overlay end date",
         "info": "Please enter date using exact format ( Month dd, yyyy hh:mm:ss GMT[timezone offset] ) e.g. November 30, 2020 23:59:00 GMT+1100"
       },
-
-            {
+      {
         "type": "header",
         "content": "Phase 2"
       },
@@ -61,6 +73,6 @@
         "id": "discountoverlay_enddate2",
         "label": "Overlay end date",
         "info": "Please enter date using exact format ( Month dd, yyyy hh:mm:ss GMT[timezone offset] ) e.g. November 30, 2020 23:59:00 GMT+1100"
-      }     
+      }
     ]
   },
