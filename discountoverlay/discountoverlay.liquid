@@ -2,10 +2,29 @@
 
 {% if settings.discountoverlay_enable %}
 
+
+{% if settings.tag_filtering %}
+
+
+{% for tag in product.tags %}
+
+{% if tag == settings.filter_tag %}
+<p class="discountoverlay" style="display:none">{{settings.discountoverlay_text}}</p>
+
+
+<p class="discountoverlay2" style="display:none">{{settings.discountoverlay_text2}}</p>
+{% endif %}
+
+
+{% endfor %}
+
+{% else %}
+
 <p class="discountoverlay" style="display:none">{{settings.discountoverlay_text}}</p>
 
 
 <p class="discountoverlay2" style="display:none">{{settings.discountoverlay_text2}}</p>
 
+{% endif %}
 
 {% endif %}
