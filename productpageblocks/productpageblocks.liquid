@@ -21,7 +21,7 @@
 </div>
 <div class="featurerowitem col-sm-12 col-md-6" style="{% if block.settings.fullsizeimg == false %}padding: 0px 30px;{%endif%}{% if block.settings.fullsizeimg == true %}padding: 0;{%endif%}display:flex;justify-content: center;" >
   
-  <img class="pageblockimage" src="{{block.settings.image | img_url: 'x500' }}" height="auto" width="auto">
+  <img class="pageblockimage" style="align-self: flex-start;" src="{{block.settings.image | img_url: 'x500' }}" height="auto" width="auto">
 </div>
 </div>
   </div>
