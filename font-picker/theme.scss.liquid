@@ -1,0 +1,66 @@
+
+{% assign base_font_name = settings.body_font_name %}
+{% assign base_font_file = settings.body_font_file %}
+{% assign base_font_file_bold = settings.body_font_file_bold %}
+{% assign base_font_file_italic = settings.body_font_file_italic %}
+
+
+{% assign header_font_name = settings.header_font_name %}
+{% assign header_font_file = settings.header_font_file %}
+{% assign header_font_file_bold = settings.header_font_file_bold %}
+{% assign header_font_file_italic = settings.header_font_file_italic %}
+
+
+@font-face {
+  font-family: "{{ base_font_name }}";
+  src: url("{{ base_font_file }}") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}  
+
+@font-face {
+  font-family: "{{ base_font_name }}";
+  src: url("{{ base_font_file_bold }}") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}  
+
+@font-face {
+  font-family: "{{ base_font_name }}";
+  src: url("{{ base_font_file_italic }}") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}  
+
+@font-face {
+  font-family: "{{ header_font_name }}";
+  src: url("{{ header_font_file }}") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}  
+
+@font-face {
+  font-family: "{{ header_font_name }}";
+  src: url("{{ header_font_file_bold }}") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}  
+
+@font-face {
+  font-family: "{{ header_font_name }}";
+  src: url("{{ header_font_file_italic }}") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}  
+
+
+
+body{
+  font-family: '{{ base_font_name }}', 'Montserrat', Arial, sans-serif;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: '{{ header_font_name }}', 'Montserrat', Arial, sans-serif;
+
+}

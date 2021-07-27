@@ -1,0 +1,53 @@
+{
+    "name": "Fonts",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Body Text"
+      },
+      {
+        "type": "text",
+        "id": "body_font_name",
+        "label": "Body Font Name"
+      },
+      {
+        "type": "text",
+        "id": "body_font_file",
+        "label": "Body Font File (ASSET URL)"
+      },
+      {
+        "type": "text",
+        "id": "body_font_file_bold",
+        "label": "Body Font File BOLD (ASSET URL)"
+      },
+      {
+        "type": "text",
+        "id": "body_font_file_italic",
+        "label": "Body Font File ITALIC (ASSET URL)"
+      },
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "text",
+        "id": "header_font_name",
+        "label": "Header Font Name" 
+      },
+      {
+        "type": "text",
+        "id": "header_font_file",
+        "label": "Header Font File (ASSET URL)"
+      },
+      {
+        "type": "text",
+        "id": "header_font_file_bold",
+        "label": "Header Font File BOLD (ASSET URL)"
+      },
+      {
+        "type": "text",
+        "id": "header_font_file_italic",
+        "label": "Header Font File ITALIC (ASSET URL)"
+      }
+    ]
+}
