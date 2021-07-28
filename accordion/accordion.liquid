@@ -1,19 +1,9 @@
-<div class="container" style="margin-bottom: 80px;text-align: center"> 
+    <div class="container" style="margin-bottom: 80px;text-align: center"> 
   
-  {% if section.settings.section-heading != blank %}
- <h2 class="SectionHeader__Heading Heading u-h1" style="margin-bottom: 20px;">{{section.settings.section-heading}}</h2>
-<h3 class="SectionHeader__SubHeading Heading u-h6" style="margin-bottom: 60px;">{{section.settings.section-subheading}}</h3>
-{% endif %}
-
 
 <div class="row" style="display: flex; justify-content: center;">
  <div class="col-xs-10 col-md-6"> 
-   <button class="belaccordion active">Details</button>
-<div class="belpanel show">
-<div style="margin: 20px 0">
-  <span class="accordioncontent " style="text-align: start">{{ product.description }}</span>
-</div>
-</div>
+
 {% for block in section.blocks %}
 <button class="belaccordion">{{block.settings.title}}</button>
 <div class="belpanel">
@@ -24,10 +14,48 @@
 {% endfor %} 
   </div>
 </div>
+      
+      
 </div>  
 
 
-        <style>
+
+        
+ 
+
+{% schema %}
+  {
+    "name": "Accordions",
+    "settings": [],
+	"blocks": [
+			{
+				"type": "accordion",
+				"name": "Accordion",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Accordion Title"
+					},
+					{
+						"type": "richtext",
+						"id": "content",
+						"label": "Accordion Content"
+					}
+				
+					
+				]
+			}
+		]
+  }
+{% endschema %}
+
+
+
+
+
+{% stylesheet %}
+
 .accordioncontent p {
    font-size: 15px;
   line-height: 1.6; 
@@ -77,31 +105,10 @@ transition: max-height 0.2s ease-out;
 .show {
 max-height: 1000px; 
 }
-</style>
-        
-        
-        
-        
-        <script>
+{% endstylesheet %}
 
-/** var acc = document.getElementsByClassName("belaccordion");
-var i;
-       
-          
-for (i = 0; i < acc.length; i++) {
-acc[i].addEventListener("click", function() {
-  $(".activepanel").css("max-height", "0");
-  this.classList.toggle("active");
-  var panel = this.nextElementSibling;
-  panel.classList.toggle("activepanel");
-  if (panel.style.maxHeight) {
-    panel.style.maxHeight = null;
-  } else {
-    panel.style.maxHeight = panel.scrollHeight + "px";
-  } 
-});
-}
-  **/        
+
+<script>  
           
 var accordions = document.getElementsByClassName("belaccordion");
 
