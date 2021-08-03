@@ -1,0 +1,2 @@
+{% assign link-icon = link.title | prepend: 'FILENAME-PREFIX' | append: '.png' | replace: ' ', '-' | downcase %}
+<img src="{{ link-icon | asset_img_url: '100x', scale: 2 }}" alt="{{ link.title }}" class="menu-icon" onError="style.display = 'none';" >
