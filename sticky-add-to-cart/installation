@@ -1,2 +1,2 @@
-add {% include 'sticky-add-to-cart' %} to product-template
+add {% render 'sticky-add-to-cart' %} to theme.liquid above the closing body tag (</body>)
 
