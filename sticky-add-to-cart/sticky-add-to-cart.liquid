@@ -1,3 +1,4 @@
+{% if template contains 'product' %}
 <div style="position:fixed;width:100%;bottom:0; z-index:999; background: white; padding:15px 0" id="sticky-add-to-cart" class="sticky-add-to-cart hide">
   <div class="sticky-cart-wrapper">
 {% form "product", product, class: "sticky-form"  %}
@@ -24,4 +25,5 @@
   </div>
  
 </div>
+{% endif %}
 

@@ -1,0 +1,26 @@
+<section class="relative container">
+  <div class="page-width">
+    {{ section.settings.klaviyo_newsletter }}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Klaviyo Newsletter",
+    "settings": [
+      {
+        "type": "html",
+        "id": "klaviyo_newsletter",
+        "label": "Klaviyo Neswletter",
+        "default": "<p>Paste the Klaviyo code for the sign up form (newsletter) here. This code can be found under the ‘Behaviors’ tab in Klaviyo</p>",
+        "info": "Please note that errors in any custom HTML can affect your theme layout. Please make sure all HTML is valid."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Klaviyo Newsletter",
+        "category": "Advanced"
+      }
+    ]
+  }
+{% endschema %}
