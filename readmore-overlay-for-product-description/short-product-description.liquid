@@ -1,0 +1,119 @@
+<div class="product-single__description rte">
+
+            {% if section.settings.read_more  %}
+            
+            <div class="product-description-short">
+			
+              	{{ product.description | strip_html | truncate: section.settings.max_chars, " " }}
+           
+                <a class="readmore" href="#">{{section.settings.read_more_text}}&nbsp; 
+                    <span class="down-arrow"></span>
+                </a>
+
+                </div>
+                <div class="product-description-full" style="display:none;">
+                    {{ product.description }}
+
+                <a class="readless" href="#">{{section.settings.read_less_text}}&nbsp; 
+                    <span class="up-arrow"></span>
+                </a>
+              
+            </div>
+  
+            {% else %}
+              {{ product.description }}
+          	{% endif %} 
+        
+</div>
+
+{% schema %}
+{
+  "name": "Product Description",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "read_more",
+      "label": "Enable read more",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Read more title",
+      "default": "Read More"
+    },
+    {
+      "type": "text",
+      "id": "read_less_text",
+      "label": "Read less title",
+      "default": "Read Less"
+    },
+	{
+      "type": "number",
+      "id": "max_chars",
+      "label": "Truncate after",
+      "info":"Truncate product description from X characters",
+      "default": 550
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.product-description-short{
+  position: relative; 
+}
+.readmore {
+  position: absolute; 
+  bottom: 0; 
+  left: 0;
+  width: 100%; 
+  margin: 0; 
+  padding: 180px 0 6px; 
+  background-image: -moz-linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  background-image: -webkit-linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  background-image: -o-linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  background-image: -ms-linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+}
+.readmore, .readless  {
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  text-decoration:none;
+  display: block;
+}
+.readmore .down-arrow  {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+.readless .up-arrow {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  margin-top: -2px;
+}
+
+{% endstylesheet %}
+
+{% javascript %}
+ 
+ $('.readmore').click(function (event) {
+    $('.product-description-full').show();
+    $('.product-description-short').hide();
+});
+$('.readless').click(function (event) {
+    $('.product-description-short').show();
+    $('.product-description-full').hide();
+}); 
+
+
+{% endjavascript %}
