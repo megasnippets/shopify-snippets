@@ -2,26 +2,26 @@
 
             {% if section.settings.read_more  %}
        
-  		      <div class="product-description-short">
+  		<div class="product-description-short">
 			
-              	{{ product.description | strip_html | truncate: section.settings.max_chars, " " }}
-           
-                <a class="readmore" href="#">{{section.settings.read_more_text}}&nbsp; 
-                    <span class="down-arrow"></span>
-                </a>
+			{{ product.description | strip_html | truncate: section.settings.max_chars, " " }}
 
-                </div>
-                <div class="product-description-full" style="display:none;">
-                    {{ product.description }}
+			<a class="readmore" href="#">{{section.settings.read_more_text}}&nbsp; 
+			    <span class="down-arrow"></span>
+			</a>
 
-                <a class="readless" href="#">{{section.settings.read_less_text}}&nbsp; 
-                    <span class="up-arrow"></span>
-                </a>
+			</div>
+			<div class="product-description-full" style="display:none;">
+			    {{ product.description }}
+
+			<a class="readless" href="#">{{section.settings.read_less_text}}&nbsp; 
+			    <span class="up-arrow"></span>
+			</a>
               
-            </div>
+           	</div>
   
             {% else %}
-              {{ product.description }}
+              		{{ product.description }}
             {% endif %} 
         
 </div>
