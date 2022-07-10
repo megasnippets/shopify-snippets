@@ -1,0 +1,393 @@
+
+<div class="listicle-wrap" style="width: 100%;display: flex; justify-content: center;">
+
+    <div class="listicle-page-width" style="{% if section.settings.fake_display_ad %}max-width:1100px;{%else%}max-width: 750px;{%endif%} margin: 0 auto; padding: 0 20px;display: flex;flex-wrap:wrap;margin-bottom: 60px;">
+      
+      
+      
+      
+      <div class="listicle-inner {% if section.settings.fake_display_ad %}listicle-inner-with-ad{%endif%}" style=" " >
+     
+    <div style="padding: 60px 0;">
+    
+    
+      
+      
+      
+    
+    <header class="listicle-article-heading" >
+      
+      <h1 class="listicle-article-h1" style="font-size: 26px;">
+        
+    
+    {{ article.title }}
+        
+      </h1>
+      
+      <p style="margin-bottom: 40px;">
+        
+        
+        {{section.settings.article_excerpt}}
+        
+      </p>
+      
+    </header>
+      
+      
+      <div class="listicle-author-container" >
+        
+        <section class="listicle-author" style="display: flex; flex-wrap: wrap;">
+          
+          
+          
+          <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+            <meta itemprop="name" content="{{ section.settings.author_name }}" > 
+          </span> 
+          
+    
+            
+            <div class="listicle-author-avatar" style="display: flex; align-items: center;">
+              
+              
+              {% if section.settings.author_image  %}
+              
+                  <div class="background" style="width:60px;height:60px;background-size:contain;background-image:url('{{section.settings.author_image | img_url: '400x'}} ');" >
+                  
+                  </div>
+                  
+              
+              
+              {% else %}
+              
+              
+              <div style="width:60px;height:60px;object-fit:contain">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 599.64 599.58">
+      <path d="M599.6 305.48c-3.37 164.92-138.9 297.38-306 294.04C129.15 596.24-3 460.88.05 294.1 3.07 129.31 138.73-3.27 305.97.06 470.55 3.34 602.31 138.79 599.6 305.48ZM293.08 529.74c41.63.01 81.27-4.65 111.61-12.79 20.85-5.59 41.03-12.88 58.19-26.59 13.7-10.95 21.62-24.73 20.14-42.84-.57-6.97-.99-13.96-1.92-20.89-13.04-98.06-103.4-168.35-201.92-157.15-90.8 10.32-161.04 87.93-162.75 179.54-.27 14.64 4.7 26.66 15.06 36.68 12.62 12.21 28.06 19.56 44.34 25.3 39.95 14.1 81.53 17.6 117.24 18.74Zm98.45-374.2c.07-51.04-41.09-92.67-91.7-92.76-50.4-.09-91.84 41.77-91.79 92.71.05 50.77 41.28 92.42 91.5 92.42 50.78 0 91.93-41.31 91.99-92.38Z"/>
+    </svg>
+                
+              </div>
+              
+              {% endif %}
+            
+            </div>
+          
+          
+      <div style="padding: 0 20px;">
+          
+          <div class="details">
+            
+            <span>By </span>{{ section.settings.author_name }}
+    
+    
+            
+            </div>
+          
+          <div class="" style="font-weight: 600; margin-top: 8px; font-size: 12px;">
+              Updated:
+            </div> 
+          
+          <div class="details__date">
+             {{ article.published_at | date:format: 'month_day_year' }}
+            </div>
+        
+          </div>
+     
+        </section> 
+        
+      
+      
+      </div>
+      
+      
+    </div>
+    
+      
+     
+    
+    <img style="width: 100%;" src="{{ article.image | img_url: '750x' }}" />
+    
+    
+    
+    
+    
+    
+             
+    {{ article.content }}
+      
+      
+      
+      {% for block in section.blocks %}
+      
+       <div style="margin-top: 40px;">
+      
+      <div style="display: flex; align-items: center;margin-bottom: 40px;">
+        
+        <div class="listicle-index">
+          
+          {{ forloop.index }}
+          
+        </div>
+        
+         <h1 class="listicle-article-h2" style="font-size: 22px; margin-bottom: 0;">
+        
+    
+    {{ block.settings.list_item_title }}
+        
+      </h1>
+        
+      </div>
+      
+      
+    <img style="width: 100%;" src="{{ block.settings.list_item_image | img_url: '750x' }}" />
+    
+    
+    
+      
+      
+      <div>
+        
+        
+        
+        {{ block.settings.list_item_content }}
+        
+      </div>
+         
+         <div style="display: flex; flex-wrap: wrap;margin-top: 40px;">
+           
+           <div style="width: 50%; object-fit: contain;" >
+           
+           <img style="width: 100%" src="{{ block.settings.list_item_product.images[0].src | img_url: '750x' }}" />
+           
+             
+           </div>
+           
+           <div style="width: 50%; margin: auto; padding: 25px;" >
+           <h3>{{ block.settings.list_item_product.title }}</h3>
+           
+           <h4>{{ block.settings.list_item_product.price | money }}</h4>
+           
+           
+           <a style="padding: 15px 10px; margin-top: 40px; max-width: 160px;display: block; background-color: black; color: white; font-weight: 600; text-align: center" href="{{ block.settings.list_item_product.url }}">
+           
+            Learn More
+           
+           </a>
+             
+           </div>
+           
+         </div>
+         
+         
+         
+         
+      </div>
+        
+        {% if block.settings.list_item_banner %}
+      
+      <div style="object-fit: cover; height: 300px; width: 100%; padding: 40px 0;overflow: hidden;">
+        
+        <a href="{{block.settings.list_item_banner_link}}" >
+        
+        <img style="width: 100%;" src="{{block.settings.list_item_banner  | img_url: '900x' }}" />
+             
+        </a>
+          
+        
+      </div>
+        
+        {% endif %}
+      
+      
+      {% endfor %}
+        
+      </div>
+      
+      
+      {% if section.settings.fake_display_ad %}
+      
+      
+      
+      
+      
+    
+      
+      <div class="fake-ad" style="padding: 60px 0px;padding-left: 40px;overflow: hidden;">
+        <a href="{{ section.settings.fake_display_ad_link}}">
+        
+        
+        <img style="width: 100%; object-fit: contain" src="{{ section.settings.fake_display_ad | img_url: '750x' }}" />
+        
+        </a>
+        
+      </div>
+      
+      
+        {% endif %}
+            
+    </div>
+      
+    </div>
+    
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "articleBody": {{ article.content | strip_html | json }},
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": {{ shop.url | append: page.url | json }}
+        },
+        "headline": {{ article.title | json }},
+        {% if article.excerpt != blank %}
+          "description": {{ article.excerpt | strip_html | json }},
+        {% endif %}
+        {% if article.image %}
+          {% assign image_size = article.image.width | append: 'x' %}
+          "image": [
+            {{ article | img_url: image_size | prepend: "https:" | json }}
+          ],
+        {% endif %}
+        "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+        "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+        "author": {
+          "@type": "Person",
+          "name": "{{ section.settings.author_name }}"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": {{ shop.name | json }}
+        }
+      }
+      </script>
+    
+    {% schema %}
+    {
+      "name": "Listicle Article",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Article"
+        },
+    
+    {
+          "type": "text",
+          "id": "article_excerpt",
+          "label": "Article Excerpt"
+    },
+          {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Admin."
+        },
+      {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Avatar"
+        },
+    
+      {
+          "type": "image_picker",
+          "id": "fake_display_ad",
+          "label": "Right column display ad"
+        },
+      {
+          "type": "url",
+          "id": "fake_display_ad_link",
+          "label": "Right column display ad link"
+        }
+    
+    
+      ],
+      "blocks": [
+         {
+           "name": "List Item",
+           "type": "Item",
+           "settings": [
+              {
+          "type": "image_picker",
+          "id": "list_item_image",
+          "label": "List Item Image"
+            },
+     {
+          "type": "text",
+          "id": "list_item_title",
+          "label": "List Item Title"
+        },
+     {
+          "type": "richtext",
+          "id": "list_item_content",
+          "label": "List Item Content"
+        },
+     {
+          "type": "product",
+          "id": "list_item_product",
+          "label": "List Item Product"
+        },
+    
+    {
+          "type": "image_picker",
+          "id": "list_item_banner",
+          "label": "List Item Banner"
+            },
+      {
+          "type": "url",
+          "id": "list_item_banner_link",
+          "label": "List Item Banner link"
+        }
+           ]
+         }
+       ]
+    }
+    {% endschema %}
+    
+    
+    <style>
+      
+      .listicle-index {
+      
+      width: 40px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 25px;
+    margin-right: 20px;
+      
+      }
+      
+      .listicle-inner-with-ad {
+        
+       width: 70%; 
+      }
+      
+      
+      .fake-ad {
+        
+       width: 30%;  
+      }
+      
+      @media only screen and (max-width: 600px) {
+        
+        
+         .listicle-inner-with-ad {
+        
+       width: 100%; 
+      }
+        
+        
+        .fake-ad {
+         
+          display: none;
+          
+        }
+        
+        
+      }
+      
+    </style>
+    
+    
