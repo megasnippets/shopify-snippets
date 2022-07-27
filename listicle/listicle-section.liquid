@@ -128,20 +128,22 @@
           
         </div>
         
-         <h1 class="listicle-article-h2" style="font-size: 22px; margin-bottom: 0;">
+         <h2 class="listicle-article-h2" style="font-size: 22px; margin-bottom: 0;">
         
     
     {{ block.settings.list_item_title }}
         
-      </h1>
+      </h2>
         
       </div>
-      
+
+
+         {% if block.settings.list_item_image %}
       
     <img style="width: 100%;" src="{{ block.settings.list_item_image | img_url: '750x' }}" />
     
     
-    
+     {% endif %}
       
       
       <div>
@@ -151,10 +153,19 @@
         {{ block.settings.list_item_content }}
         
       </div>
+
+         <h3 class="listicle-article-h2" style="font-size: 18px; margin-top: 40px;">
+        
+    
+  {{ block.settings.product_item_title }}
+        
+      </h3>
+
          
-         <div style="display: flex; flex-wrap: wrap;margin-top: 40px;">
+         
+         <div style="display: flex; flex-wrap: wrap;margin-top: 20px;margin-bottom: 30px;">
            
-           <div style="width: 50%; object-fit: contain;" >
+           <div style="width: 50%; object-fit: contain;margin:auto;" >
            
            <img style="width: 100%" src="{{ block.settings.list_item_product.images[0].src | img_url: '750x' }}" />
            
@@ -169,7 +180,7 @@
            
            <a style="padding: 15px 10px; margin-top: 40px; max-width: 160px;display: block; background-color: black; color: white; font-weight: 600; text-align: center" href="{{ block.settings.list_item_product.url }}">
            
-            Learn More
+            Shop Now
            
            </a>
              
@@ -177,7 +188,13 @@
            
          </div>
          
-         
+          <div>
+        
+        
+        
+        {{ block.settings.list_item_content_under }}
+        
+      </div>
          
          
       </div>
@@ -199,8 +216,23 @@
       
       
       {% endfor %}
-        
+
+       
       </div>
+
+      {% if section.settings.bottom_article_content %}
+
+      <div style="width:100%" class="listicle-bottom-text">
+
+         <hr>
+
+{{section.settings.bottom_article_content}}
+        
+
+
+      </div>
+
+        {%  endif %}
       
       
       {% if section.settings.fake_display_ad %}
@@ -295,6 +327,11 @@
           "type": "url",
           "id": "fake_display_ad_link",
           "label": "Right column display ad link"
+        },
+         {
+          "type": "richtext",
+          "id": "bottom_article_content",
+          "label": "Bottom Article Content"
         }
     
     
@@ -319,10 +356,20 @@
           "id": "list_item_content",
           "label": "List Item Content"
         },
+            {
+          "type": "text",
+          "id": "product_item_title",
+          "label": "Product Item Title"
+        },
      {
           "type": "product",
           "id": "list_item_product",
           "label": "List Item Product"
+        },
+           {
+          "type": "richtext",
+          "id": "list_item_content_under",
+          "label": "List Item Content (Under product)"
         },
     
     {
@@ -343,6 +390,12 @@
     
     
     <style>
+
+      .listicle-bottom-text a, .listicle-bottom-text strong {
+        font-weight: bold;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
       
       .listicle-index {
       
